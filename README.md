@@ -4,27 +4,42 @@ A java CLI app that calculates the quickest path between two stations.
 
 ## Problem
 
-TODO
+Write a CLI app that:
+- When run in a terminal, the app imports a routes.csv file and stores route information in
+memory
+- The app finds the shortest route based on time, and returns this value along with how
+many stops it takes between the destinations
+- App interface:
+    - The user inputs a single starting train station
+    - The user inputs a single ending train station
+    - The resulting output should display number of stops and length of trip
+- Utilize object oriented patterns
+- Include unit tests
+- Do not use any external libraries. We are looking for original code.
+- No need to use any algorithms; keep it simple and have fun!
 
 ## [Brainstorming/Design](https://docs.google.com/document/d/1hraWvOwVA5EXrtfoamw7gSW507F7Sk_0gxjSHfLqQew/edit#heading=h.lar6olxsub5)
 
 Recursively traverse through all possible paths, then calculate duration for each path to determine the quickest path.
 
 ### Features & Limitations
- - Bidirectional support: To auto-generate bidirectional data, add TODO flag
- - In the case of duplicate entries in the csv file TODO
- - TODO
+- In the case of duplicate entries in the csv file, duplicates will be ignored, ie. only the first entry will be used
+- Bidirectional support: To auto-generate bidirectional data, add the following flag
+  
+    --autogen-bidirections=T
+- TODO
 
+## App Details
 ### To Run App
     1. cd adc-train
     2. mvn package
     3. cd target
-    4. java -cp adc-train-1.0.jar asia.crea.adc.train.adc-train.App
+    4. java -cp adc-train-1.0.jar asia.crea.adc.train.adc_train.App --file=/path/to/data.csv
  
 ### To Run Test
     1. cd adc-train
     2. mvn clean test
    
-## Requirments
+### Requirments
 - Apache Maven 3.6.0
 - Java 1.8.0_201

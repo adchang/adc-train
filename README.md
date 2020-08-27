@@ -26,7 +26,7 @@ Recursively traverse through all possible paths, then calculate duration for eac
 - In the case of duplicate entries in the csv file, duplicates will be ignored, ie. only the first entry will be used
 - Bidirectional support: To auto-generate bidirectional data, add the following flag:
   
-    --autogen-bidirections=T
+      --autogen-bidirections=T
 
 ## App Details
 ### To Run App

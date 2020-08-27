@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -16,12 +17,12 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
-    
+
     <junit.jupiter.version>5.6.2</junit.jupiter.version>
   </properties>
 
   <dependencies>
-  	<!-- Compile/runtime dependencies -->
+    <!-- Compile/runtime dependencies -->
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
@@ -61,7 +62,7 @@
     </dependency>
 
   </dependencies>
-  
+
   <build>
     <plugins>
       <plugin>
@@ -75,16 +76,16 @@
             </goals>
             <configuration>
               <archive>
-              <manifest>
-                <mainClass>asia.crea.adc.train.adc_train.App</mainClass>
-              </manifest>
-            </archive>
+                <manifest>
+                  <mainClass>asia.crea.adc.train.adc_train.App</mainClass>
+                </manifest>
+              </archive>
               <descriptorRefs>
                 <descriptorRef>jar-with-dependencies</descriptorRef>
               </descriptorRefs>
-	        </configuration>
-	      </execution>
-	    </executions>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -93,5 +94,5 @@
       </plugin>
     </plugins>
   </build>
-  
+
 </project>

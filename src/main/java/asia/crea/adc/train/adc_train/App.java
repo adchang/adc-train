@@ -44,7 +44,7 @@ public class App {
   
   static final String ERROR_ENTER_STATION_NAME = "You must enter a station name\n";
   static final String ERROR_ENTER_DIFFERENT_STATION_NAME = "You must enter a different station name\n";
-  static final String ERROR_FILE_INVALID = "Cannot find specified file. Please enter a valid path to your data file.\n";
+  static final String ERROR_FILE_INVALID = "Cannot find specified file. Please enter a valid path to your data file.\n\n";
   static final String ERROR_FILE_BAD = "File contains invalid data.\n";
   static final String ERROR_NO_ROUTES = "\nNo routes from %s to %s.\n\n";
   

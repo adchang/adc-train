@@ -40,10 +40,10 @@ public class App {
       "where options include:\n" +
       "    --file                     Required. Path to data file\n" +
       "    --autogen-bidirections     T to auto-generate bidirectional data\n\n" +
-      "Example: java -cp adc-train-1.0.jar asia.crea.adc.train.adc_train.App --file=/path/to/data.csv --autogen-bidirections=T\n\n";
+      "Example: java -cp adc-train-1.0-jar-with-dependencies.jar asia.crea.adc.train.adc_train.App --file=/path/to/data.csv --autogen-bidirections=T\n\n";
   
-  static final String ERROR_ENTER_STATION_NAME = "You must enter a station name";
-  static final String ERROR_ENTER_DIFFERENT_STATION_NAME = "You must enter a different station name";
+  static final String ERROR_ENTER_STATION_NAME = "You must enter a station name\n";
+  static final String ERROR_ENTER_DIFFERENT_STATION_NAME = "You must enter a different station name\n";
   static final String ERROR_FILE_INVALID = "Cannot find specified file. Please enter a valid path to your data file.\n";
   static final String ERROR_FILE_BAD = "File contains invalid data.\n";
   static final String ERROR_NO_ROUTES = "No routes from %s to %s.\n";
@@ -88,7 +88,7 @@ public class App {
 
     // If help is specified, ignore all other arguments and show help
     if (showHelp || !canStart) {
-      out.println(HELP);
+      out.print(HELP);
       return null;
     }
     
@@ -143,7 +143,7 @@ public class App {
       if (!exists) {
         data.put(from, new Route(from, to, duration));
         if (config.generateBidirectional()) {
-          data.put(to,  new Route(to, from, duration));
+          data.put(to, new Route(to, from, duration));
         }
       }
     }
@@ -165,7 +165,7 @@ public class App {
       out.print(PROMPT_1);
       startStation = scanner.nextLine().trim();
       canContinue = !StringUtils.isNullOrEmpty(startStation);
-      if (!canContinue) out.println(ERROR_ENTER_STATION_NAME);
+      if (!canContinue) out.print(ERROR_ENTER_STATION_NAME);
     }
     
     canContinue = false;
@@ -174,11 +174,11 @@ public class App {
       endStation = scanner.nextLine().trim();
       canContinue = !StringUtils.isNullOrEmpty(endStation);
       if (!canContinue) {
-        out.println(ERROR_ENTER_STATION_NAME);
+        out.print(ERROR_ENTER_STATION_NAME);
         continue;
       }
       canContinue = !startStation.equals(endStation);
-      if (!canContinue) out.println(ERROR_ENTER_DIFFERENT_STATION_NAME);
+      if (!canContinue) out.print(ERROR_ENTER_DIFFERENT_STATION_NAME);
     }
     
     Set<List<Route>> paths = RouteUtils.buildPaths(data, startStation, endStation);

@@ -25,12 +25,12 @@ public class AppTest {
   public void testParseArgs()  {
     out.reset();
     Config config = App.parseArgs(printStream, "");
-    assertEquals(App.HELP + "\n", out.toString());
+    assertEquals(App.HELP, out.toString());
     assertTrue(config == null);
 
     out.reset();
     config = App.parseArgs(printStream, "--file=/asf/as.csv", "--help");
-    assertEquals(App.HELP + "\n", out.toString());
+    assertEquals(App.HELP, out.toString());
     assertTrue(config == null);
 
     out.reset();
@@ -107,12 +107,13 @@ public class AppTest {
     out.reset();
     App.runApp(new Scanner("\n\na\n\na\na\n\nB\n"), 
         printStream, DataTestUtils.getSampleData());
-    assertEquals(App.PROMPT_1 + App.ERROR_ENTER_STATION_NAME + "\n" +
-        App.PROMPT_1 + App.ERROR_ENTER_STATION_NAME + "\n" +
-        App.PROMPT_1 + App.PROMPT_2 + App.ERROR_ENTER_STATION_NAME + "\n" +
-        App.PROMPT_2 + App.ERROR_ENTER_DIFFERENT_STATION_NAME + "\n" +
-        App.PROMPT_2 + App.ERROR_ENTER_DIFFERENT_STATION_NAME + "\n" +
-        App.PROMPT_2 + App.ERROR_ENTER_STATION_NAME + "\n" +
+    assertEquals(App.PROMPT_1 + App.ERROR_ENTER_STATION_NAME +
+        App.PROMPT_1 + App.ERROR_ENTER_STATION_NAME +
+        App.PROMPT_1 + 
+        App.PROMPT_2 + App.ERROR_ENTER_STATION_NAME +
+        App.PROMPT_2 + App.ERROR_ENTER_DIFFERENT_STATION_NAME +
+        App.PROMPT_2 + App.ERROR_ENTER_DIFFERENT_STATION_NAME +
+        App.PROMPT_2 + App.ERROR_ENTER_STATION_NAME +
         App.PROMPT_2 + String.format(App.ERROR_NO_ROUTES, "a", "B"),
         out.toString());
 

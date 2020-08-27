@@ -126,7 +126,6 @@ public class RouteUtilsTest {
     Route answer = RouteUtils.getQuickestPath(paths);
     Route expected = new Route("A", "D", 15, 0);
     assertEquals(expected, answer);
-    assertEquals(expected.getNumStops(), answer.getNumStops());
   }
   
   @Test

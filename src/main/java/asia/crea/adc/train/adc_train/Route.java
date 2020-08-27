@@ -23,9 +23,7 @@ public class Route {
     Preconditions.checkArgument(!isNullOrEmpty(toStation));
     Preconditions.checkNotNull(duration);
     Preconditions.checkNotNull(numStops);
-    
-    StringUtils.isNullOrEmpty("asdf");
-    
+
     this.fromStation = fromStation;
     this.toStation = toStation;
     this.duration = duration;
@@ -60,6 +58,6 @@ public class Route {
   
   @Override
   public int hashCode() {
-      return Objects.hash(fromStation, toStation, duration, numStops);
+    return Objects.hash(fromStation, toStation, duration, numStops);
   }
 }

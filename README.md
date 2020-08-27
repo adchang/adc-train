@@ -26,7 +26,7 @@ Recursively traverse through all possible paths, then calculate duration for eac
 - In the case of duplicate entries in the csv file, duplicates will be ignored, ie. only the first entry will be used
 - Bidirectional support: To auto-generate bidirectional data, add the following flag:
   
-        --autogen-bidirections=T
+    --autogen-bidirections=T
 
 ## App Details
 ### To Run App
@@ -42,6 +42,6 @@ or after building, you can run:
     1. cd adc-train-master
     2. mvn clean test
    
-### Requirments
+### Requirements
 - Apache Maven 3.6.0
 - Java 1.8.0_201

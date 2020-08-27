@@ -27,14 +27,13 @@ Recursively traverse through all possible paths, then calculate duration for eac
 - Bidirectional support: To auto-generate bidirectional data, add the following flag
   
     --autogen-bidirections=T
-- TODO
 
 ## App Details
 ### To Run App
     1. cd adc-train
     2. mvn package
     3. cd target
-    4. java -cp adc-train-1.0.jar asia.crea.adc.train.adc_train.App --file=/path/to/data.csv
+    4. java -cp adc-train-1.0-jar-with-dependencies.jar asia.crea.adc.train.adc_train.App --file=../sampleData.csv
  
 ### To Run Test
     1. cd adc-train

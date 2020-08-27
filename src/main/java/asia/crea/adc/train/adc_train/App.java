@@ -31,6 +31,7 @@ public class App {
   
   static final String DATA_FILE_DELIM = ",";
   static final Splitter splitter = Splitter.on(DATA_FILE_DELIM);
+  static final int DATA_RECORD_SIZE = 3;
   static final int DATA_FILE_FROM_STATION_POS = 0;
   static final int DATA_FILE_TO_STATION_POS = 1;
   static final int DATA_FILE_DURATION_POS = 2;
@@ -117,12 +118,11 @@ public class App {
       List<String> fileData) {
     Multimap<String, Route> data = HashMultimap.create();
     
-    // Remove duplicate lines
     List<String> noDupes = fileData.stream().distinct().collect(Collectors.toList());
     
     for (String line : noDupes) {
       List<String> values = splitter.splitToList(line);
-      if (values.size() != 3) {
+      if (values.size() != DATA_RECORD_SIZE) {
         out.print(ERROR_FILE_BAD);
         return null;
       }

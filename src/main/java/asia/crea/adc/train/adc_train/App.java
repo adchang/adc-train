@@ -27,7 +27,7 @@ public class App {
   static final String PROMPT_1 = "What station are you getting on the train?: ";
   static final String PROMPT_2 = "What station are you getting off the train?: ";
 
-  static final String ANSWER = "\nYour trip from %s to %s includes %d stops and will take %d minutes.\n";
+  static final String ANSWER = "\nYour trip from %s to %s includes %d stops and will take %d minutes.\n\n";
   
   static final String DATA_FILE_DELIM = ",";
   static final Splitter splitter = Splitter.on(DATA_FILE_DELIM);
@@ -36,7 +36,7 @@ public class App {
   static final int DATA_FILE_DURATION_POS = 2;
   
   static final String HELP = 
-      "Usage: java -cp adc-train-1.0.jar asia.crea.adc.train.adc_train.App [args...]\n" +
+      "Usage: java -cp adc-train-1.0-jar-with-dependencies.jar asia.crea.adc.train.adc_train.App [args...]\n" +
       "where options include:\n" +
       "    --file                     Required. Path to data file\n" +
       "    --autogen-bidirections     T to auto-generate bidirectional data\n\n" +
@@ -46,7 +46,7 @@ public class App {
   static final String ERROR_ENTER_DIFFERENT_STATION_NAME = "You must enter a different station name\n";
   static final String ERROR_FILE_INVALID = "Cannot find specified file. Please enter a valid path to your data file.\n";
   static final String ERROR_FILE_BAD = "File contains invalid data.\n";
-  static final String ERROR_NO_ROUTES = "No routes from %s to %s.\n";
+  static final String ERROR_NO_ROUTES = "\nNo routes from %s to %s.\n\n";
   
   public static void main(String... args ) {
     Config config = parseArgs(args);

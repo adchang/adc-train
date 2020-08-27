@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -116,7 +117,7 @@ public class RouteUtilsTest {
 
   @Test
   void testGetQuickestPath() {
-    List<List<Route>> paths = new ArrayList<>();
+    Set<List<Route>> paths = new HashSet<>();
     paths.add(DataTestUtils.getAD17Path());
     List<Route> path_AD = new ArrayList<>();
     path_AD.add(DataTestUtils.ROUTE_A_D_15);

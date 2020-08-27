@@ -82,7 +82,7 @@ public class RouteUtils {
     return paths;
   }
   
-  public static final Route getQuickestPath(List<List<Route>> paths) {
+  public static final Route getQuickestPath(Set<List<Route>> paths) {
     Preconditions.checkNotNull(paths);
     
     List<Route> quickest = null;

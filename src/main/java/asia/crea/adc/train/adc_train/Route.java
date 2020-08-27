@@ -2,6 +2,8 @@ package asia.crea.adc.train.adc_train;
 
 import static asia.crea.adc.train.adc_train.StringUtils.isNullOrEmpty;
 
+import java.util.Objects;
+
 import com.google.common.base.Preconditions;
 
 public class Route {
@@ -48,11 +50,16 @@ public class Route {
   
   @Override
   public String toString() {
-    return fromStation + DELIM + toStation + DELIM + duration;
+    return fromStation + DELIM + toStation + DELIM + duration + DELIM + numStops;
   }
   
   @Override
   public boolean equals(Object obj) {
     return this.toString().equals(obj.toString());
+  }
+  
+  @Override
+  public int hashCode() {
+      return Objects.hash(fromStation, toStation, duration, numStops);
   }
 }

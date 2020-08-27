@@ -48,7 +48,6 @@ public class AppTest {
   
   @Test
   public void testLoadDataFromFile() {
-    
     out.reset();
     Multimap<String, Route> data = App.loadDataFromFile(printStream,
         new Config("missing.csv", false));
@@ -59,14 +58,14 @@ public class AppTest {
     data = App.loadDataFromFile(printStream, config);
     assertEquals("", out.toString());
     
-    /*
     Multimap<String, Route> expected = DataTestUtils.getSampleData();
     for (String key : expected.keys()) {
       assertEquals(expected.get(key).size(), data.get(key).size());
       for (Route route : expected.get(key)) {
-        assertTrue(data.get(key).contains(route));
+        assertTrue("\nDATA: " + data.get(key) + "\nROUTE: " + route.toString(),
+            data.get(key).contains(route));
       }
-    }*/
+    }
   }
   
   @Test
@@ -88,7 +87,19 @@ public class AppTest {
     fileData.add("A,B,5");
     fileData.add("A,B,5");
     data = App.loadData(printStream, config, fileData);
+    assertEquals("", out.toString());
+    assertEquals(1, data.size());
+    assertTrue(data.get("A").contains(DataTestUtils.ROUTE_A_B_5));
     
+    out.reset();
+    fileData = new ArrayList<>();
+    fileData.add("A,B,5");
+    fileData.add("A,B,10");
+    data = App.loadData(printStream, configBi, fileData);
+    assertEquals("", out.toString());
+    assertEquals(2, data.size());
+    assertTrue(data.get("A").contains(DataTestUtils.ROUTE_A_B_5));
+    assertTrue(data.get("B").contains(DataTestUtils.ROUTE_B_A_5));
   }
   
   @Test

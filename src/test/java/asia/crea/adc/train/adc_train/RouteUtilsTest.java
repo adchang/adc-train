@@ -17,10 +17,10 @@ public class RouteUtilsTest {
   void testBuildPaths() {
     Multimap<String, Route> data = DataTestUtils.getSampleData();
     
-    assertEquals("[[A;B;5]]", 
+    assertEquals("[[A;B;5;0]]", 
         RouteUtils.buildPaths(data, "A", "B").toString());
 
-    assertEquals("[[A;B;5, B;C;5]]", 
+    assertEquals("[[A;B;5;0, B;C;5;0]]", 
         RouteUtils.buildPaths(data, "A", "C").toString());
     
     Set<List<Route>> result = RouteUtils.buildPaths(data, "E", "J");
@@ -58,18 +58,18 @@ public class RouteUtilsTest {
   void testBuildPaths_junction() {
     Multimap<String, Route> data = DataTestUtils.getJunctionData();
 
-    assertEquals("[[B;C;1, C;H;1, H;I;1]]", 
+    assertEquals("[[B;C;1;0, C;H;1;0, H;I;1;0]]", 
         RouteUtils.buildPaths(data, "B", "I").toString());
 
-    //assertEquals("[[G;H;1, H;I;1, I;J;1, J;D;1], [G;J;1, J;D;1]]", 
+    //assertEquals("[[G;H;1;0, H;I;1;0, I;J;1;0, J;D;1;0], [G;J;1;0, J;D;1;0]]", 
     //    RouteUtils.buildPaths(data, "G", "D").toString());
     assertEquals(2, RouteUtils.buildPaths(data, "G", "D").size());
     
-    //assertEquals("[[A;B;1, B;C;1, C;H;1, H;I;1, I;J;1, J;D;1, D;E;1], [A;D;1, D;E;1], [A;B;1, B;C;1, C;D;1, D;E;1]]", 
+    //assertEquals("[[A;B;1;0, B;C;1;0, C;H;1;0, H;I;1;0, I;J;1;0, J;D;1;0, D;E;1;0], [A;D;1;0, D;E;1;0], [A;B;1;0, B;C;1;0, C;D;1;0, D;E;1;0]]", 
     //    RouteUtils.buildPaths(data, "A", "E").toString());
     assertEquals(3, RouteUtils.buildPaths(data, "A", "E").size());
     
-    //assertEquals("[[F;G;1, G;H;1, H;I;1, I;J;1, J;D;1, D;E;1], [F;G;1, G;J;1, J;D;1, D;E;1]]", 
+    //assertEquals("[[F;G;1;0, G;H;1;0, H;I;1;0, I;J;1;0, J;D;1;0, D;E;1;0], [F;G;1;0, G;J;1;0, J;D;1;0, D;E;1;0]]", 
     //    RouteUtils.buildPaths(data, "F", "E").toString());
     assertEquals(2, RouteUtils.buildPaths(data, "F", "E").size());
     
@@ -80,21 +80,21 @@ public class RouteUtilsTest {
   void testBuildPaths_junctionBidirectional() {
     Multimap<String, Route> data = DataTestUtils.getJunctionBidirectionalData();
 
-    /*assertEquals("[[A;D;1, D;C;1, C;D;1, D;J;1, J;I;1, I;H;1, H;G;1, G;F;1], " +
-            "[A;D;1, D;E;1, E;D;1, D;J;1, J;G;1, G;F;1], " + 
-            "[A;D;1, D;J;1, J;I;1, I;H;1, H;G;1, G;F;1], " + 
-            "[A;B;1, B;C;1, C;D;1, D;J;1, J;I;1, I;H;1, H;G;1, G;F;1], " +
-            "[A;D;1, D;C;1, C;D;1, D;J;1, J;G;1, G;F;1], " +
-            "[A;D;1, D;E;1, E;D;1, D;J;1, J;I;1, I;H;1, H;G;1, G;F;1], " +
-            "[A;B;1, B;C;1, C;H;1, H;I;1, I;J;1, J;G;1, G;F;1], " +
-            "[A;D;1, D;C;1, C;H;1, H;I;1, I;J;1, J;G;1, G;F;1], " +
-            "[A;D;1, D;E;1, E;D;1, D;C;1, C;H;1, H;I;1, I;J;1, J;G;1, G;F;1], " +
-            "[A;B;1, B;C;1, C;H;1, H;G;1, G;F;1], " +
-            "[A;D;1, D;E;1, E;D;1, D;C;1, C;H;1, H;G;1, G;F;1], " +
-            "[A;B;1, B;C;1, C;D;1, D;J;1, J;G;1, G;F;1], " +
-            "[A;D;1, D;J;1, J;D;1, D;C;1, C;H;1, H;G;1, G;F;1], " +
-            "[A;D;1, D;C;1, C;H;1, H;G;1, G;F;1], " +
-            "[A;D;1, D;J;1, J;G;1, G;F;1]]", 
+    /*assertEquals("[[A;D;1;0, D;C;1;0, C;D;1;0, D;J;1;0, J;I;1;0, I;H;1;0, H;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;E;1;0, E;D;1;0, D;J;1;0, J;G;1;0, G;F;1;0], " + 
+            "[A;D;1;0, D;J;1;0, J;I;1;0, I;H;1;0, H;G;1;0, G;F;1;0], " + 
+            "[A;B;1;0, B;C;1;0, C;D;1;0, D;J;1;0, J;I;1;0, I;H;1;0, H;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;C;1;0, C;D;1;0, D;J;1;0, J;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;E;1;0, E;D;1;0, D;J;1;0, J;I;1;0, I;H;1;0, H;G;1;0, G;F;1;0], " +
+            "[A;B;1;0, B;C;1;0, C;H;1;0, H;I;1;0, I;J;1;0, J;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;C;1;0, C;H;1;0, H;I;1;0, I;J;1;0, J;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;E;1;0, E;D;1;0, D;C;1;0, C;H;1;0, H;I;1;0, I;J;1;0, J;G;1;0, G;F;1;0], " +
+            "[A;B;1;0, B;C;1;0, C;H;1;0, H;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;E;1;0, E;D;1;0, D;C;1;0, C;H;1;0, H;G;1;0, G;F;1;0], " +
+            "[A;B;1;0, B;C;1;0, C;D;1;0, D;J;1;0, J;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;J;1;0, J;D;1;0, D;C;1;0, C;H;1;0, H;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;C;1;0, C;H;1;0, H;G;1;0, G;F;1;0], " +
+            "[A;D;1;0, D;J;1;0, J;G;1;0, G;F;1;0]]", 
         RouteUtils.buildPaths(data, "A", "F").toString());*/
     assertEquals(15, RouteUtils.buildPaths(data, "A", "F").size());
   }

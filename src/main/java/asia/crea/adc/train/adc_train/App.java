@@ -135,8 +135,16 @@ public class App {
       }
       String from = values.get(DATA_FILE_FROM_STATION_POS);
       String to = values.get(DATA_FILE_TO_STATION_POS);
+      boolean exists = false;
       for (Route route : data.get(from)) {
-        
+        exists = route.getFromStation().equals(from) && route.getToStation().equals(to);
+        if (exists) break;
+      }
+      if (!exists) {
+        data.put(from, new Route(from, to, duration));
+        if (config.generateBidirectional()) {
+          data.put(to,  new Route(to, from, duration));
+        }
       }
     }
 

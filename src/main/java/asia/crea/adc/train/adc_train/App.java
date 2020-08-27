@@ -157,28 +157,28 @@ public class App {
   
   @VisibleForTesting
   static final void runApp(Scanner scanner, PrintStream out, Multimap<String, Route> data) {
-    boolean canContinue = false;
+    boolean hasErrors = true;
     String startStation = "";
     String endStation = "";
     
-    while (!canContinue) {
+    while (hasErrors) {
       out.print(PROMPT_1);
       startStation = scanner.nextLine().trim();
-      canContinue = !StringUtils.isNullOrEmpty(startStation);
-      if (!canContinue) out.print(ERROR_ENTER_STATION_NAME);
+      hasErrors = StringUtils.isNullOrEmpty(startStation);
+      if (hasErrors) out.print(ERROR_ENTER_STATION_NAME);
     }
     
-    canContinue = false;
-    while (!canContinue) {
+    hasErrors = true;
+    while (hasErrors) {
       out.print(PROMPT_2);
       endStation = scanner.nextLine().trim();
-      canContinue = !StringUtils.isNullOrEmpty(endStation);
-      if (!canContinue) {
+      hasErrors = StringUtils.isNullOrEmpty(endStation);
+      if (hasErrors) {
         out.print(ERROR_ENTER_STATION_NAME);
         continue;
       }
-      canContinue = !startStation.equals(endStation);
-      if (!canContinue) out.print(ERROR_ENTER_DIFFERENT_STATION_NAME);
+      hasErrors = startStation.equals(endStation);
+      if (hasErrors) out.print(ERROR_ENTER_DIFFERENT_STATION_NAME);
     }
     
     Set<List<Route>> paths = RouteUtils.buildPaths(data, startStation, endStation);

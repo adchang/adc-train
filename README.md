@@ -30,13 +30,13 @@ Recursively traverse through all possible paths, then calculate duration for eac
 
 ## App Details
 ### To Run App
-    1. cd adc-train
+    1. cd adc-train-master
     2. mvn package
     3. cd target
     4. java -cp adc-train-1.0-jar-with-dependencies.jar asia.crea.adc.train.adc_train.App --file=../sampleData.csv
  
 ### To Run Test
-    1. cd adc-train
+    1. cd adc-train-master
     2. mvn clean test
    
 ### Requirments

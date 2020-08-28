@@ -123,5 +123,39 @@ public class AppTest {
     assertEquals(App.PROMPT_1 + App.PROMPT_2 +
         String.format(App.ANSWER, "A", "B", 0, 5),
         out.toString());
+
+    out.reset();
+    App.runApp(new Scanner("A\nD\n"), 
+        printStream, DataTestUtils.getSampleData(), 
+        new Config("sampleData.csv", false, true, false));
+    assertEquals(App.PROMPT_1 + App.PROMPT_2 +
+        String.format(App.ANSWER, "A", "D", 0, 15) +
+        String.format(App.SHOW_PATHS, "A -> B -> C -> D (17)\n" + 
+            "A -> D (15)\n"),
+        out.toString());
+
+    out.reset();
+    App.runApp(new Scanner("A\nD\n"), 
+        printStream, DataTestUtils.getSampleData(), 
+        new Config("sampleData.csv", false, false, true));
+    assertEquals(App.PROMPT_1 + App.PROMPT_2 +
+        String.format(App.ANSWER, "A", "D", 0, 15) +
+        String.format(App.SHOW_QUICKEST, "A -> D"),
+        out.toString());
+    
+    out.reset();
+    App.runApp(new Scanner("A\nD\n"), 
+        printStream, DataTestUtils.getSampleData(), 
+        new Config("sampleData.csv", false, true, true));
+    assertEquals(App.PROMPT_1 + App.PROMPT_2 +
+        String.format(App.ANSWER, "A", "D", 0, 15) +
+        String.format(App.SHOW_QUICKEST, "A -> D") +
+        String.format(App.SHOW_PATHS, "A -> B -> C -> D (17)\n" + 
+            "A -> D (15)\n"),
+        out.toString());
   }
 }
+/*
+
+
+*/

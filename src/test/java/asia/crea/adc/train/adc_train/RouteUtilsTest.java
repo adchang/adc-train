@@ -24,6 +24,7 @@ public class RouteUtilsTest {
         RouteUtils.buildPaths(data, "A", "C").toString());
     
     Set<List<Route>> result = RouteUtils.buildPaths(data, "E", "J");
+    assertEquals(2, result.size());
     List<Route> path = new ArrayList<>();
     path.add(DataTestUtils.ROUTE_E_F_5);
     path.add(DataTestUtils.ROUTE_F_G_5);
@@ -38,6 +39,7 @@ public class RouteUtilsTest {
     assertTrue(result.contains(path));
 
     result = RouteUtils.buildPaths(data, "A", "D");
+    assertEquals(2, result.size());
     path = new ArrayList<>();
     path.add(DataTestUtils.ROUTE_A_B_5);
     path.add(DataTestUtils.ROUTE_B_C_5);
@@ -47,8 +49,7 @@ public class RouteUtilsTest {
     path.add(DataTestUtils.ROUTE_A_D_15);
     assertTrue(result.contains(path));
 
-    assertEquals(0, 
-        RouteUtils.buildPaths(data, "A", "J").size());
+    assertTrue(RouteUtils.buildPaths(data, "A", "J").isEmpty());
   }
 
   // TODO These tests work, but the string representation of the set is not stable
@@ -73,7 +74,7 @@ public class RouteUtilsTest {
     //    RouteUtils.buildPaths(data, "F", "E").toString());
     assertEquals(2, RouteUtils.buildPaths(data, "F", "E").size());
     
-    assertEquals(0, RouteUtils.buildPaths(data, "B", "G").size());
+    assertTrue(RouteUtils.buildPaths(data, "B", "G").isEmpty());
   }
   
   @Test
@@ -105,6 +106,7 @@ public class RouteUtilsTest {
     data.put("B", DataTestUtils.ROUTE_B_A_5);
     
     Set<List<Route>> result = RouteUtils.buildPaths(data, "B", "D");
+    assertEquals(2, result.size());
     List<Route> path = new ArrayList<>();
     path.add(DataTestUtils.ROUTE_B_C_5);
     path.add(DataTestUtils.ROUTE_C_D_7);

@@ -97,10 +97,8 @@ public class RouteUtils {
     }
     
     Integer pos = quickest.size() - 1;
-    Route path = new Route(quickest.get(0).getFromStation(), 
+    return new Route(quickest.get(0).getFromStation(), 
         quickest.get(pos).getToStation(), quickestDuration, pos, quickest);
-    
-    return path;
   }
   
   @VisibleForTesting

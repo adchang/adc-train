@@ -214,9 +214,7 @@ public class App {
       out.print(String.format(SHOW_QUICKEST,
           String.format(DISPLAY_QUICKEST,
               answer.getPath().get(0).getFromStation(),
-              answer.getPath().stream()
-                  .map(o -> o.getToStation())
-                  .collect(Collectors.joining(PATH_DELIM)))));
+              pathToString(answer.getPath()))));
     }
     
     if (config.showPaths()) {
@@ -224,12 +222,16 @@ public class App {
       for (List<Route> route : paths) {
         builder.append(String.format(DISPLAY_PATH, 
             route.get(0).getFromStation(),
-            route.stream()
-                .map(o -> o.getToStation())
-                .collect(Collectors.joining(PATH_DELIM)),
+            pathToString(route),
             RouteUtils.getPathDuration(route)));
       }
       out.print(String.format(SHOW_PATHS, builder.toString()));
     }
+  }
+  
+  private static final String pathToString(List<Route> path) {
+    return path.stream()
+        .map(o -> o.getToStation())
+        .collect(Collectors.joining(PATH_DELIM));
   }
 }

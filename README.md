@@ -27,6 +27,12 @@ Recursively traverse through all possible paths, then calculate duration for eac
 - Bidirectional support: To auto-generate bidirectional data, add the following flag:
   
       --autogen-bidirections=T
+- Show paths: To show all paths, add the following flag:
+  
+      --showPaths=T
+- Show quickest path: To show the quickest path, add the following flag:
+  
+      --showQuickest=T
 
 ## App Details
 ### To Run App

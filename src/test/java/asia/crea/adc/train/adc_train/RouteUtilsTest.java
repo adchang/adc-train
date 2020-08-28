@@ -124,8 +124,9 @@ public class RouteUtilsTest {
     paths.add(path_AD);
     
     Route answer = RouteUtils.getQuickestPath(paths);
-    Route expected = new Route("A", "D", 15, 0);
+    Route expected = new Route("A", "D", 15, 0, path_AD);
     assertEquals(expected, answer);
+    assertEquals(expected.getPath(), answer.getPath());
   }
   
   @Test

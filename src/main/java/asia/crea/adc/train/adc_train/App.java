@@ -22,12 +22,19 @@ public class App {
   static final String PARAM_HELP = "help";
   static final String PARAM_FILE = "file";
   static final String PARAM_AUTO_GEN_BIDRECTIONS = "autogen-bidirections";
+  static final String PARAM_SHOW_PATHS = "showPaths";
+  static final String PARAM_SHOW_QUICKEST = "showQuickest";
   static final String VALUE_TRUE = "T";
   
   static final String PROMPT_1 = "What station are you getting on the train?: ";
   static final String PROMPT_2 = "What station are you getting off the train?: ";
 
   static final String ANSWER = "\nYour trip from %s to %s includes %d stops and will take %d minutes.\n\n";
+  static final String PATH_DELIM = " -> ";
+  static final String SHOW_PATHS = "All paths:\n%s\n";
+  static final String DISPLAY_PATH = "%s" + PATH_DELIM + "%s (%d)\n";
+  static final String SHOW_QUICKEST = "Quickest path: %s\n\n";
+  static final String DISPLAY_QUICKEST = "%s" + PATH_DELIM + "%s";
   
   static final String DATA_FILE_DELIM = ",";
   static final Splitter splitter = Splitter.on(DATA_FILE_DELIM);
@@ -40,8 +47,10 @@ public class App {
       "Usage: java -cp adc-train-1.0-jar-with-dependencies.jar asia.crea.adc.train.adc_train.App [args...]\n" +
       "where options include:\n" +
       "    --file                     Required. Path to data file\n" +
-      "    --autogen-bidirections     T to auto-generate bidirectional data\n\n" +
-      "Example: java -cp adc-train-1.0-jar-with-dependencies.jar asia.crea.adc.train.adc_train.App --file=/path/to/data.csv --autogen-bidirections=T\n\n";
+      "    --autogen-bidirections     T to auto-generate bidirectional data\n" +
+      "    --showPaths                T to show all paths\n" +
+      "    --showQuickest             T to show the quickest path\n\n" +
+      "Example: java -cp adc-train-1.0-jar-with-dependencies.jar asia.crea.adc.train.adc_train.App --file=/path/to/data.csv --showQuickest=T\n\n";
   
   static final String ERROR_ENTER_STATION_NAME = "You must enter a station name\n";
   static final String ERROR_ENTER_DIFFERENT_STATION_NAME = "You must enter a different station name\n";
@@ -56,7 +65,7 @@ public class App {
     Multimap<String, Route> data = loadData(config);
     if (data == null) return;
 
-    runApp(data);
+    runApp(data, config);
   }
   
   private static final Config parseArgs(String...args) {
@@ -69,6 +78,8 @@ public class App {
     boolean canStart = false;
     String dataFile = "";
     boolean generateBidirectional = false;
+    boolean showPaths = false;
+    boolean showQuickest = false;
     
     for (String arg : args) {
       String param = FLAG_PREFIX + PARAM_HELP;
@@ -85,6 +96,14 @@ public class App {
       if (param.equals(arg)) {
         generateBidirectional = true;
       }
+      param = FLAG_PREFIX + PARAM_SHOW_PATHS + PARAM_DELIM + VALUE_TRUE;
+      if (param.equals(arg)) {
+        showPaths = true;
+      }
+      param = FLAG_PREFIX + PARAM_SHOW_QUICKEST + PARAM_DELIM + VALUE_TRUE;
+      if (param.equals(arg)) {
+        showQuickest = true;
+      }
     }
 
     // If help is specified, ignore all other arguments and show help
@@ -93,7 +112,7 @@ public class App {
       return null;
     }
     
-    return new Config(dataFile, generateBidirectional);
+    return new Config(dataFile, generateBidirectional, showPaths, showQuickest);
   }
 
   private static final Multimap<String, Route> loadData(Config config) {
@@ -151,12 +170,13 @@ public class App {
     return data;
   }
 
-  private static final void runApp(Multimap<String, Route> data) {
-    runApp(new Scanner(System.in), System.out, data);
+  private static final void runApp(Multimap<String, Route> data, Config config) {
+    runApp(new Scanner(System.in), System.out, data, config);
   }
   
   @VisibleForTesting
-  static final void runApp(Scanner scanner, PrintStream out, Multimap<String, Route> data) {
+  static final void runApp(Scanner scanner, PrintStream out, Multimap<String, Route> data, 
+      Config config) {
     boolean hasErrors = true;
     String startStation = "";
     String endStation = "";
@@ -189,5 +209,27 @@ public class App {
     Route answer = RouteUtils.getQuickestPath(paths);
     out.print(String.format(ANSWER, answer.getFromStation(), answer.getToStation(),
         answer.getNumStops(), answer.getDuration()));
+    
+    if (config.showQuickest()) {
+      out.print(String.format(SHOW_QUICKEST,
+          String.format(DISPLAY_QUICKEST,
+              answer.getPath().get(0).getFromStation(),
+              answer.getPath().stream()
+                  .map(o -> o.getToStation())
+                  .collect(Collectors.joining(PATH_DELIM)))));
+    }
+    
+    if (config.showPaths()) {
+      StringBuilder builder = new StringBuilder();
+      for (List<Route> route : paths) {
+        builder.append(String.format(DISPLAY_PATH, 
+            route.get(0).getFromStation(),
+            route.stream()
+                .map(o -> o.getToStation())
+                .collect(Collectors.joining(PATH_DELIM)),
+            RouteUtils.getPathDuration(route)));
+      }
+      out.print(String.format(SHOW_PATHS, builder.toString()));
+    }
   }
 }

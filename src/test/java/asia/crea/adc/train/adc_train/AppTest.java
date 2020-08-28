@@ -15,8 +15,8 @@ import org.junit.jupiter.api.Test;
 import com.google.common.collect.Multimap;
 
 public class AppTest {
-  Config config = new Config("sampleData.csv", false);
-  Config configBi = new Config("sampleData.csv", true);
+  Config config = new Config("sampleData.csv", false, false, false);
+  Config configBi = new Config("sampleData.csv", true, false, false);
 
   ByteArrayOutputStream out = new ByteArrayOutputStream();
   PrintStream printStream = new PrintStream(out);
@@ -50,7 +50,7 @@ public class AppTest {
   public void testLoadDataFromFile() {
     out.reset();
     Multimap<String, Route> data = App.loadDataFromFile(printStream,
-        new Config("missing.csv", false));
+        new Config("missing.csv", false, false, false));
     assertEquals(App.ERROR_FILE_INVALID, out.toString());
     assertTrue(data == null);
 
@@ -106,7 +106,7 @@ public class AppTest {
   public void testRunApp() {
     out.reset();
     App.runApp(new Scanner("\n\na\n\na\na\n\nB\n"), 
-        printStream, DataTestUtils.getSampleData());
+        printStream, DataTestUtils.getSampleData(), config);
     assertEquals(App.PROMPT_1 + App.ERROR_ENTER_STATION_NAME +
         App.PROMPT_1 + App.ERROR_ENTER_STATION_NAME +
         App.PROMPT_1 + 
@@ -119,7 +119,7 @@ public class AppTest {
 
     out.reset();
     App.runApp(new Scanner("A\nB\n"), 
-        printStream, DataTestUtils.getSampleData());
+        printStream, DataTestUtils.getSampleData(), config);
     assertEquals(App.PROMPT_1 + App.PROMPT_2 +
         String.format(App.ANSWER, "A", "B", 0, 5),
         out.toString());

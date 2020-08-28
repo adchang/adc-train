@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Preconditions;
@@ -97,19 +98,15 @@ public class RouteUtils {
     
     Integer pos = quickest.size() - 1;
     Route path = new Route(quickest.get(0).getFromStation(), 
-        quickest.get(pos).getToStation(), quickestDuration, pos);
-   
+        quickest.get(pos).getToStation(), quickestDuration, pos, quickest);
+    
     return path;
   }
   
   @VisibleForTesting
   static final Integer getPathDuration(List<Route> path) {
-    Integer duration = 0;
-    for (Route route : path) {
-      duration += route.getDuration();
-    }
-    
-    return duration;
+    return path.stream()
+        .collect(Collectors.summingInt(Route::getDuration));
   }
   
   private RouteUtils() {

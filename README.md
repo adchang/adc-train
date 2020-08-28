@@ -35,7 +35,7 @@ Recursively traverse through all possible paths, then calculate duration for eac
       --showQuickest=T
 
 ## App Details
-### To Run App
+### To run App
     1. cd adc-train-master
     2. mvn package
     3. java -cp target/adc-train-1.0-jar-with-dependencies.jar asia.crea.adc.train.adc_train.App --file=sampleData.csv
@@ -44,7 +44,7 @@ or after building, you can run:
 
     ./train.sh --file=sampleData.csv
 
-### To Run Test
+### To run tests
     1. cd adc-train-master
     2. mvn clean test
    

@@ -19,7 +19,7 @@ public class RouteUtils {
    * 
    * @param data Multimap of all available routes between adjoining stations
    * @param startStation Name of the starting station
-   * @param endStation Name of the ending stations
+   * @param endStation Name of the ending station
    * @return All possible paths between the two stations
    */
   public static final Set<List<Route>> buildPaths(Multimap<String, Route> data,
@@ -47,9 +47,9 @@ public class RouteUtils {
    * will return all possible permutations.
    * 
    * @param data Multimap of all available routes between adjoining stations
-   * @param visited Set of stations names that have been already visited
+   * @param visited Set of station names that have been already visited
    * @param currentRoute The current route in the path
-   * @param endStation Name of the ending stations
+   * @param endStation Name of the ending station
    * @return All possible paths between the two stations. An empty List when there
    *         are no valid paths to the destination station.
    */
@@ -85,6 +85,7 @@ public class RouteUtils {
   
   public static final Route getQuickestPath(Set<List<Route>> paths) {
     Preconditions.checkNotNull(paths);
+    Preconditions.checkArgument(!paths.isEmpty());
     
     List<Route> quickest = null;
     Integer quickestDuration = Integer.MAX_VALUE;

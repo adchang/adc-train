@@ -4,12 +4,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Random;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.junit.jupiter.api.Test;
 
+import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
 public class RouteUtilsTest {
@@ -134,5 +141,75 @@ public class RouteUtilsTest {
   @Test
   void testGetDuration() {
     assertEquals(17, RouteUtils.getPathDuration(DataTestUtils.getAD17Path()));
+  }
+  
+  @Test
+  void testGetAllRoutes() {
+    String FROM = "FROM %s:\n%s\n";
+    String PATH = "\t\t%s\n";
+    StringBuilder routes = new StringBuilder();
+    Multimap<String, List<Route>> paths = 
+        RouteUtils.getAllPaths(DataTestUtils.getJunctionBidirectionalData(), "E");
+    paths.keySet().stream().forEach(startStation -> {
+            StringBuilder destinationPaths = new StringBuilder();
+            paths.get(startStation).stream().forEach(route -> {
+                    destinationPaths.append(String.format(PATH,
+                        Streams.<Route>join(route, o -> o.getToStation(), App.PATH_DELIM)));
+                });
+            routes.append(String.format(FROM, startStation, destinationPaths.toString()));
+        });
+    
+    //assertEquals("", "\n" + routes.toString());
+  }
+  
+  @Test
+  void benchmark() {
+    Random random = new Random();
+    Multimap<String, Route> data = HashMultimap.create();
+    int numLines = 10;
+    int minStopsPerLine = 5;
+    int maxStopsPerLine = 20;
+    int maxDuration = 8;
+    List<Integer> lineNumStops = new ArrayList<>();
+    for (int line = 0; line < numLines; line++) {
+      int numStops = 0;
+      while (numStops < minStopsPerLine) {
+        numStops = random.nextInt(maxStopsPerLine);
+      }
+      lineNumStops.add(numStops);
+      for (int x = 0; x < numStops - 1; x++) {
+        String from = "L" + line + "-" + x;
+        String to = "L" + line + "-" + (x + 1);
+        data.put(from, new Route(from, to, random.nextInt(maxDuration)));
+        data.put(to, new Route(to, from, random.nextInt(maxDuration)));
+      }
+    }
+    for (int line = 0; line < numLines - 1; line++) {
+      int fromStation = random.nextInt(lineNumStops.get(line));
+      int toStation = random.nextInt(lineNumStops.get(line + 1));
+      String from = "L" + line + "-" + fromStation;
+      String to = "L" + (line + 1) + "-" + toStation;
+      data.put(from, new Route(from, to, random.nextInt(maxDuration)));
+      data.put(to, new Route(to, from, random.nextInt(maxDuration)));
+    }
+    
+    System.out.println("********************************************************************************");
+    int numRuns = 50;
+    for (int x = 0; x < numRuns; x++) {
+      RouteResult result = RouteUtils.getAllPaths(data, Mode.FOR, true);    
+      System.out.println(String.format("FOR %d : %d, average: %.6f", x,
+          result.getDuration(),
+          result.getDurations().stream().mapToLong(i -> i).average().orElse(0)));
+      result = RouteUtils.getAllPaths(data, Mode.STREAM, true);    
+      System.out.println(String.format("STREAM %d : %d, average: %.6f", x,
+          result.getDuration(),
+          result.getDurations().stream().mapToLong(i -> i).average().orElse(0)));
+      result = RouteUtils.getAllPaths(data, Mode.PARALLEL, true);
+      System.out.println(String.format("PARALLEL %d : %d, average: %.6f", x,
+          result.getDuration(),
+          result.getDurations().stream().filter(Objects::nonNull)
+              .mapToLong(i -> (i == null) ? 0 : i).average().orElse(0)));
+    }
+    System.out.println("********************************************************************************");
   }
 }

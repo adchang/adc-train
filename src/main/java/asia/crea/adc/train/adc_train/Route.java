@@ -4,12 +4,17 @@ import static asia.crea.adc.train.adc_train.StringUtils.isNullOrEmpty;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Function;
+import java.util.function.ToIntFunction;
 
 import javax.annotation.Nullable;
 
 import com.google.common.base.Preconditions;
 
 public class Route {
+  public static final ToIntFunction<Route> getDuration = route -> route.getDuration();
+  public static final Function<Route, String> getToStation = route -> route.getToStation();
+  
   private static final String DELIM = ";";
   
   private String fromStation;

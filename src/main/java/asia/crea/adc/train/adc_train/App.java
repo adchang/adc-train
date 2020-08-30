@@ -8,7 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
-import java.util.stream.Collectors;
+import java.util.function.Predicate;
 
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Splitter;
@@ -137,9 +137,7 @@ public class App {
       List<String> fileData) {
     Multimap<String, Route> data = HashMultimap.create();
     
-    List<String> noDupes = fileData.stream().distinct().collect(Collectors.toList());
-    
-    for (String line : noDupes) {
+    for (String line : Streams.getDistinctList(fileData)) {
       List<String> values = splitter.splitToList(line);
       if (values.size() != DATA_RECORD_SIZE) {
         out.print(ERROR_FILE_BAD);
@@ -154,12 +152,7 @@ public class App {
       }
       String from = values.get(DATA_FILE_FROM_STATION_POS);
       String to = values.get(DATA_FILE_TO_STATION_POS);
-      boolean exists = false;
-      for (Route route : data.get(from)) {
-        exists = route.getFromStation().equals(from) && route.getToStation().equals(to);
-        if (exists) break;
-      }
-      if (!exists) {
+      if (!Streams.exists(data.get(from), predicateRoute(from, to))) {
         data.put(from, new Route(from, to, duration));
         if (config.generateBidirectional()) {
           data.put(to, new Route(to, from, duration));
@@ -168,6 +161,10 @@ public class App {
     }
 
     return data;
+  }
+  
+  private static final Predicate<Route> predicateRoute(String from, String to) {
+    return path -> path.getFromStation().equals(from) && path.getToStation().equals(to);
   }
 
   private static final void runApp(Multimap<String, Route> data, Config config) {
@@ -219,19 +216,17 @@ public class App {
     
     if (config.showPaths()) {
       StringBuilder builder = new StringBuilder();
-      for (List<Route> route : paths) {
-        builder.append(String.format(DISPLAY_PATH, 
-            route.get(0).getFromStation(),
-            pathToString(route),
-            RouteUtils.getPathDuration(route)));
-      }
+      paths.stream().forEach(route -> {
+              builder.append(String.format(DISPLAY_PATH, 
+                  route.get(0).getFromStation(),
+                  pathToString(route),
+                  RouteUtils.getPathDuration(route)));
+          });
       out.print(String.format(SHOW_PATHS, builder.toString()));
     }
   }
   
   private static final String pathToString(List<Route> path) {
-    return path.stream()
-        .map(o -> o.getToStation())
-        .collect(Collectors.joining(PATH_DELIM));
+    return Streams.join(path, Route.getToStation, PATH_DELIM);
   }
 }

@@ -1,0 +1,67 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< asia.crea.adc.train:adc-train >--------------------
+[INFO] Building adc-train 1.0
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ adc-train ---
+[INFO] Deleting /opt/adchang/data/src/crea_train/adc-train/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ adc-train ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /opt/adchang/data/src/crea_train/adc-train/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:compile (default-compile) @ adc-train ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 8 source files to /opt/adchang/data/src/crea_train/adc-train/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.6:testResources (default-testResources) @ adc-train ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /opt/adchang/data/src/crea_train/adc-train/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:3.1:testCompile (default-testCompile) @ adc-train ---
+[INFO] Changes detected - recompiling the module!
+[INFO] Compiling 3 source files to /opt/adchang/data/src/crea_train/adc-train/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.22.2:test (default-test) @ adc-train ---
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running asia.crea.adc.train.adc_train.AppTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.132 s - in asia.crea.adc.train.adc_train.AppTest
+[INFO] Running asia.crea.adc.train.adc_train.RouteUtilsTest
+********************************************************************************
+FOR 0 : 1657, average: 144.906454
+STREAM 0 : 1818, average: 158.701904
+[ERROR] Tests run: 8, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.592 s <<< FAILURE! - in asia.crea.adc.train.adc_train.RouteUtilsTest
+[ERROR] perf  Time elapsed: 5.56 s  <<< ERROR!
+java.lang.NullPointerException
+	at asia.crea.adc.train.adc_train.RouteUtilsTest.lambda$perf$5(RouteUtilsTest.java:204)
+	at asia.crea.adc.train.adc_train.RouteUtilsTest.perf(RouteUtilsTest.java:204)
+
+[INFO] 
+[INFO] Results:
+[INFO] 
+[ERROR] Errors: 
+[ERROR]   RouteUtilsTest.perf:204->lambda$perf$5:204 NullPointer
+[INFO] 
+[ERROR] Tests run: 12, Failures: 0, Errors: 1, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.870 s
+[INFO] Finished at: 2020-08-29T19:42:43+07:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project adc-train: There are test failures.
+[ERROR] 
+[ERROR] Please refer to /opt/adchang/data/src/crea_train/adc-train/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

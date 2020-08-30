@@ -29,39 +29,169 @@
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running asia.crea.adc.train.adc_train.AppTest
-[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.132 s - in asia.crea.adc.train.adc_train.AppTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.119 s - in asia.crea.adc.train.adc_train.AppTest
 [INFO] Running asia.crea.adc.train.adc_train.RouteUtilsTest
 ********************************************************************************
-FOR 0 : 1657, average: 144.906454
-STREAM 0 : 1818, average: 158.701904
-[ERROR] Tests run: 8, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 5.592 s <<< FAILURE! - in asia.crea.adc.train.adc_train.RouteUtilsTest
-[ERROR] perf  Time elapsed: 5.56 s  <<< ERROR!
-java.lang.NullPointerException
-	at asia.crea.adc.train.adc_train.RouteUtilsTest.lambda$perf$5(RouteUtilsTest.java:204)
-	at asia.crea.adc.train.adc_train.RouteUtilsTest.perf(RouteUtilsTest.java:204)
-
+FOR 0 : 1529 milliseconds, average buildPaths: 198.325627 microseconds
+STREAM 0 : 1166 milliseconds, average buildPaths: 150.312827 microseconds
+PARALLEL 0 : 1194 milliseconds, average buildPaths: 303.178422 microseconds
+FOR 1 : 598 milliseconds, average buildPaths: 77.230930 microseconds
+STREAM 1 : 568 milliseconds, average buildPaths: 73.457158 microseconds
+PARALLEL 1 : 649 milliseconds, average buildPaths: 157.861420 microseconds
+FOR 2 : 505 milliseconds, average buildPaths: 65.119253 microseconds
+STREAM 2 : 590 milliseconds, average buildPaths: 76.285136 microseconds
+PARALLEL 2 : 512 milliseconds, average buildPaths: 129.704545 microseconds
+FOR 3 : 683 milliseconds, average buildPaths: 88.427247 microseconds
+STREAM 3 : 639 milliseconds, average buildPaths: 82.825366 microseconds
+PARALLEL 3 : 493 milliseconds, average buildPaths: 125.177577 microseconds
+FOR 4 : 644 milliseconds, average buildPaths: 83.423589 microseconds
+STREAM 4 : 614 milliseconds, average buildPaths: 79.536703 microseconds
+PARALLEL 4 : 499 milliseconds, average buildPaths: 126.897714 microseconds
+FOR 5 : 644 milliseconds, average buildPaths: 83.310345 microseconds
+STREAM 5 : 595 milliseconds, average buildPaths: 77.071186 microseconds
+PARALLEL 5 : 511 milliseconds, average buildPaths: 124.866623 microseconds
+FOR 6 : 643 milliseconds, average buildPaths: 83.242555 microseconds
+STREAM 6 : 602 milliseconds, average buildPaths: 77.983281 microseconds
+PARALLEL 6 : 474 milliseconds, average buildPaths: 121.151404 microseconds
+FOR 7 : 648 milliseconds, average buildPaths: 83.952717 microseconds
+STREAM 7 : 604 milliseconds, average buildPaths: 78.244645 microseconds
+PARALLEL 7 : 478 milliseconds, average buildPaths: 119.849510 microseconds
+FOR 8 : 590 milliseconds, average buildPaths: 76.398380 microseconds
+STREAM 8 : 571 milliseconds, average buildPaths: 73.981844 microseconds
+PARALLEL 8 : 508 milliseconds, average buildPaths: 114.843260 microseconds
+FOR 9 : 565 milliseconds, average buildPaths: 73.158568 microseconds
+STREAM 9 : 590 milliseconds, average buildPaths: 76.283830 microseconds
+PARALLEL 9 : 474 milliseconds, average buildPaths: 118.125555 microseconds
+FOR 10 : 588 milliseconds, average buildPaths: 76.179075 microseconds
+STREAM 10 : 576 milliseconds, average buildPaths: 74.569227 microseconds
+PARALLEL 10 : 526 milliseconds, average buildPaths: 121.513065 microseconds
+FOR 11 : 613 milliseconds, average buildPaths: 79.495951 microseconds
+STREAM 11 : 570 milliseconds, average buildPaths: 73.830329 microseconds
+PARALLEL 11 : 470 milliseconds, average buildPaths: 118.156911 microseconds
+FOR 12 : 609 milliseconds, average buildPaths: 78.930512 microseconds
+STREAM 12 : 583 milliseconds, average buildPaths: 75.547544 microseconds
+PARALLEL 12 : 467 milliseconds, average buildPaths: 117.857199 microseconds
+FOR 13 : 625 milliseconds, average buildPaths: 81.042450 microseconds
+STREAM 13 : 564 milliseconds, average buildPaths: 72.942006 microseconds
+PARALLEL 13 : 493 milliseconds, average buildPaths: 124.649856 microseconds
+FOR 14 : 616 milliseconds, average buildPaths: 79.860240 microseconds
+STREAM 14 : 582 milliseconds, average buildPaths: 75.384535 microseconds
+PARALLEL 14 : 497 milliseconds, average buildPaths: 116.466954 microseconds
+FOR 15 : 602 milliseconds, average buildPaths: 78.052900 microseconds
+STREAM 15 : 577 milliseconds, average buildPaths: 74.756270 microseconds
+PARALLEL 15 : 485 milliseconds, average buildPaths: 119.200523 microseconds
+FOR 16 : 611 milliseconds, average buildPaths: 79.253004 microseconds
+STREAM 16 : 568 milliseconds, average buildPaths: 73.479232 microseconds
+PARALLEL 16 : 477 milliseconds, average buildPaths: 121.604964 microseconds
+FOR 17 : 578 milliseconds, average buildPaths: 74.904911 microseconds
+STREAM 17 : 586 milliseconds, average buildPaths: 75.829154 microseconds
+PARALLEL 17 : 482 milliseconds, average buildPaths: 123.528743 microseconds
+FOR 18 : 599 milliseconds, average buildPaths: 77.600705 microseconds
+STREAM 18 : 569 milliseconds, average buildPaths: 73.648380 microseconds
+PARALLEL 18 : 501 milliseconds, average buildPaths: 120.023909 microseconds
+FOR 19 : 584 milliseconds, average buildPaths: 75.644331 microseconds
+STREAM 19 : 584 milliseconds, average buildPaths: 75.656087 microseconds
+PARALLEL 19 : 497 milliseconds, average buildPaths: 115.381631 microseconds
+FOR 20 : 601 milliseconds, average buildPaths: 77.804206 microseconds
+STREAM 20 : 587 milliseconds, average buildPaths: 75.943443 microseconds
+PARALLEL 20 : 501 milliseconds, average buildPaths: 118.848707 microseconds
+FOR 21 : 615 milliseconds, average buildPaths: 79.650993 microseconds
+STREAM 21 : 612 milliseconds, average buildPaths: 79.287618 microseconds
+PARALLEL 21 : 526 milliseconds, average buildPaths: 124.209667 microseconds
+FOR 22 : 579 milliseconds, average buildPaths: 74.976881 microseconds
+STREAM 22 : 569 milliseconds, average buildPaths: 73.611808 microseconds
+PARALLEL 22 : 482 milliseconds, average buildPaths: 124.492487 microseconds
+FOR 23 : 594 milliseconds, average buildPaths: 77.017111 microseconds
+STREAM 23 : 585 milliseconds, average buildPaths: 75.813610 microseconds
+PARALLEL 23 : 451 milliseconds, average buildPaths: 116.525999 microseconds
+FOR 24 : 606 milliseconds, average buildPaths: 78.538140 microseconds
+STREAM 24 : 607 milliseconds, average buildPaths: 78.644070 microseconds
+PARALLEL 24 : 454 milliseconds, average buildPaths: 115.222861 microseconds
+FOR 25 : 620 milliseconds, average buildPaths: 80.309431 microseconds
+STREAM 25 : 581 milliseconds, average buildPaths: 75.245690 microseconds
+PARALLEL 25 : 471 milliseconds, average buildPaths: 119.401072 microseconds
+FOR 26 : 624 milliseconds, average buildPaths: 80.893939 microseconds
+STREAM 26 : 572 milliseconds, average buildPaths: 74.070010 microseconds
+PARALLEL 26 : 455 milliseconds, average buildPaths: 111.987982 microseconds
+FOR 27 : 575 milliseconds, average buildPaths: 74.442137 microseconds
+STREAM 27 : 572 milliseconds, average buildPaths: 73.999739 microseconds
+PARALLEL 27 : 464 milliseconds, average buildPaths: 113.989419 microseconds
+FOR 28 : 653 milliseconds, average buildPaths: 84.655303 microseconds
+STREAM 28 : 562 milliseconds, average buildPaths: 72.820402 microseconds
+PARALLEL 28 : 483 milliseconds, average buildPaths: 119.390202 microseconds
+FOR 29 : 617 milliseconds, average buildPaths: 79.998694 microseconds
+STREAM 29 : 584 milliseconds, average buildPaths: 75.589211 microseconds
+PARALLEL 29 : 486 milliseconds, average buildPaths: 123.467276 microseconds
+FOR 30 : 603 milliseconds, average buildPaths: 78.179467 microseconds
+STREAM 30 : 586 milliseconds, average buildPaths: 75.916144 microseconds
+PARALLEL 30 : 501 milliseconds, average buildPaths: 121.891952 microseconds
+FOR 31 : 597 milliseconds, average buildPaths: 77.388454 microseconds
+STREAM 31 : 585 milliseconds, average buildPaths: 75.807210 microseconds
+PARALLEL 31 : 461 milliseconds, average buildPaths: 115.105057 microseconds
+FOR 32 : 609 milliseconds, average buildPaths: 78.922283 microseconds
+STREAM 32 : 573 milliseconds, average buildPaths: 74.188088 microseconds
+PARALLEL 32 : 517 milliseconds, average buildPaths: 121.287487 microseconds
+FOR 33 : 579 milliseconds, average buildPaths: 74.955590 microseconds
+STREAM 33 : 578 milliseconds, average buildPaths: 74.762147 microseconds
+PARALLEL 33 : 501 milliseconds, average buildPaths: 117.239420 microseconds
+FOR 34 : 586 milliseconds, average buildPaths: 75.999216 microseconds
+STREAM 34 : 584 milliseconds, average buildPaths: 75.593913 microseconds
+PARALLEL 34 : 455 milliseconds, average buildPaths: 116.043922 microseconds
+FOR 35 : 594 milliseconds, average buildPaths: 76.996996 microseconds
+STREAM 35 : 616 milliseconds, average buildPaths: 79.786573 microseconds
+PARALLEL 35 : 514 milliseconds, average buildPaths: 127.913890 microseconds
+FOR 36 : 657 milliseconds, average buildPaths: 85.087121 microseconds
+STREAM 36 : 710 milliseconds, average buildPaths: 91.929728 microseconds
+PARALLEL 36 : 594 milliseconds, average buildPaths: 152.915589 microseconds
+FOR 37 : 1030 milliseconds, average buildPaths: 133.873433 microseconds
+STREAM 37 : 688 milliseconds, average buildPaths: 89.171891 microseconds
+PARALLEL 37 : 855 milliseconds, average buildPaths: 219.162268 microseconds
+FOR 38 : 693 milliseconds, average buildPaths: 89.869514 microseconds
+STREAM 38 : 608 milliseconds, average buildPaths: 78.684169 microseconds
+PARALLEL 38 : 498 milliseconds, average buildPaths: 126.650248 microseconds
+FOR 39 : 625 milliseconds, average buildPaths: 81.013454 microseconds
+STREAM 39 : 597 milliseconds, average buildPaths: 77.263192 microseconds
+PARALLEL 39 : 475 milliseconds, average buildPaths: 121.256734 microseconds
+FOR 40 : 608 milliseconds, average buildPaths: 78.846917 microseconds
+STREAM 40 : 600 milliseconds, average buildPaths: 77.660658 microseconds
+PARALLEL 40 : 508 milliseconds, average buildPaths: 121.887640 microseconds
+FOR 41 : 600 milliseconds, average buildPaths: 77.804467 microseconds
+STREAM 41 : 609 milliseconds, average buildPaths: 78.893939 microseconds
+PARALLEL 41 : 474 milliseconds, average buildPaths: 119.889600 microseconds
+FOR 42 : 632 milliseconds, average buildPaths: 81.924634 microseconds
+STREAM 42 : 598 milliseconds, average buildPaths: 77.372910 microseconds
+PARALLEL 42 : 536 milliseconds, average buildPaths: 122.911941 microseconds
+FOR 43 : 618 milliseconds, average buildPaths: 80.092999 microseconds
+STREAM 43 : 602 milliseconds, average buildPaths: 77.912879 microseconds
+PARALLEL 43 : 477 milliseconds, average buildPaths: 118.220146 microseconds
+FOR 44 : 633 milliseconds, average buildPaths: 81.962774 microseconds
+STREAM 44 : 608 milliseconds, average buildPaths: 78.704545 microseconds
+PARALLEL 44 : 461 milliseconds, average buildPaths: 117.792423 microseconds
+FOR 45 : 630 milliseconds, average buildPaths: 81.632315 microseconds
+STREAM 45 : 623 milliseconds, average buildPaths: 80.753004 microseconds
+PARALLEL 45 : 502 milliseconds, average buildPaths: 125.308556 microseconds
+FOR 46 : 636 milliseconds, average buildPaths: 82.405303 microseconds
+STREAM 46 : 630 milliseconds, average buildPaths: 81.686129 microseconds
+PARALLEL 46 : 498 milliseconds, average buildPaths: 126.792946 microseconds
+FOR 47 : 665 milliseconds, average buildPaths: 86.194096 microseconds
+STREAM 47 : 626 milliseconds, average buildPaths: 81.048459 microseconds
+PARALLEL 47 : 576 milliseconds, average buildPaths: 132.258722 microseconds
+FOR 48 : 625 milliseconds, average buildPaths: 81.088297 microseconds
+STREAM 48 : 621 milliseconds, average buildPaths: 80.493339 microseconds
+PARALLEL 48 : 548 milliseconds, average buildPaths: 126.512479 microseconds
+FOR 49 : 661 milliseconds, average buildPaths: 85.680643 microseconds
+STREAM 49 : 702 milliseconds, average buildPaths: 90.918887 microseconds
+PARALLEL 49 : 744 milliseconds, average buildPaths: 172.738665 microseconds
+********************************************************************************
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 89.053 s - in asia.crea.adc.train.adc_train.RouteUtilsTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[ERROR] Errors: 
-[ERROR]   RouteUtilsTest.perf:204->lambda$perf$5:204 NullPointer
-[INFO] 
-[ERROR] Tests run: 12, Failures: 0, Errors: 1, Skipped: 0
+[INFO] Tests run: 12, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
 [INFO] ------------------------------------------------------------------------
-[INFO] BUILD FAILURE
+[INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  9.870 s
-[INFO] Finished at: 2020-08-29T19:42:43+07:00
+[INFO] Total time:  01:33 min
+[INFO] Finished at: 2020-08-30T08:12:25+07:00
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.22.2:test (default-test) on project adc-train: There are test failures.
-[ERROR] 
-[ERROR] Please refer to /opt/adchang/data/src/crea_train/adc-train/target/surefire-reports for the individual test results.
-[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
-[ERROR] -> [Help 1]
-[ERROR] 
-[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
-[ERROR] Re-run Maven using the -X switch to enable full debug logging.
-[ERROR] 
-[ERROR] For more information about the errors and possible solutions, please read the following articles:
-[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException

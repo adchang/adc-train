@@ -195,17 +195,18 @@ public class RouteUtilsTest {
     
     System.out.println("********************************************************************************");
     int numRuns = 50;
+    String resultOut = "%s %d : %d milliseconds, average buildPaths: %.6f microseconds";
     for (int x = 0; x < numRuns; x++) {
-      RouteResult result = RouteUtils.getAllPaths(data, Mode.FOR, true);    
-      System.out.println(String.format("FOR %d : %d, average: %.6f", x,
+      RouteResult result = RouteUtils.getAllPaths(data, Mode.FOR, true);
+      System.out.println(String.format(resultOut, "FOR", x,
           result.getDuration(),
           result.getDurations().stream().mapToLong(i -> i).average().orElse(0)));
       result = RouteUtils.getAllPaths(data, Mode.STREAM, true);    
-      System.out.println(String.format("STREAM %d : %d, average: %.6f", x,
+      System.out.println(String.format(resultOut, "STREAM", x,
           result.getDuration(),
           result.getDurations().stream().mapToLong(i -> i).average().orElse(0)));
       result = RouteUtils.getAllPaths(data, Mode.PARALLEL, true);
-      System.out.println(String.format("PARALLEL %d : %d, average: %.6f", x,
+      System.out.println(String.format(resultOut, "PARALLEL", x,
           result.getDuration(),
           result.getDurations().stream().filter(Objects::nonNull)
               .mapToLong(i -> (i == null) ? 0 : i).average().orElse(0)));
